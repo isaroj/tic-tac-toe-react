@@ -44,54 +44,72 @@ const PlayerBoard = () => {
           itemArray[0] === itemArray[2]
         ) {
           setWinMessage(`${itemArray[0]} won the match`);
+          setWinningMark([0,1,2])
         } else if (
           itemArray[3] !== "empty" &&
           itemArray[3] === itemArray[4] &&
           itemArray[3] === itemArray[5]
         ) {
           setWinMessage(`${itemArray[3]} won the match`);
+          setWinningMark([3, 4, 5]);
+
         } else if (
           itemArray[6] !== "empty" &&
           itemArray[6] === itemArray[7] &&
           itemArray[6] === itemArray[8]
         ) {
           setWinMessage(`${itemArray[6]} won the match`);
+          setWinningMark([6, 7, 8]);
         } else if (
           itemArray[0] !== "empty" &&
           itemArray[0] === itemArray[3] &&
           itemArray[0] === itemArray[6]
         ) {
           setWinMessage(`${itemArray[0]} won the match`);
+          setWinningMark([0, 3, 6]);
         } else if (
           itemArray[1] !== "empty" &&
           itemArray[1] === itemArray[4] &&
           itemArray[1] === itemArray[7]
         ) {
           setWinMessage(`${itemArray[1]} won the match`);
+          setWinningMark([1, 4, 7]);
         } else if (
           itemArray[2] !== "empty" &&
           itemArray[2] === itemArray[5] &&
           itemArray[2] === itemArray[8]
         ) {
           setWinMessage(`${itemArray[2]} won the match`);
+          setWinningMark([2, 5, 8]);
         } else if (
           itemArray[0] !== "empty" &&
           itemArray[0] === itemArray[4] &&
           itemArray[0] === itemArray[8]
         ) {
           setWinMessage(`${itemArray[0]} won the match`);
+          setWinningMark([0, 4, 8]);
         } else if (
           itemArray[2] !== "empty" &&
           itemArray[2] === itemArray[4] &&
           itemArray[2] === itemArray[6]
         ) {
           setWinMessage(`${itemArray[2]} won the match`);
+          setWinningMark([2, 4, 6]);
         }
     }
     const reloadGame = () => {
         setIsCross(false)
         setWinMessage('')
         itemArray.fill('empty')
+    }
+    const setWinningMark = (posArray) => {
+        posArray.forEach(
+          (pos) => {
+            document.querySelectorAll(".markWinning")[
+              pos
+            ].style.backgroundColor = "#FF6263";
+          }
+        );
     }
 
     return (
@@ -108,7 +126,7 @@ const PlayerBoard = () => {
                 style={styles.cardContainer}
                 onClick={() => nextMove(index)}
               >
-                <Card style={styles.card}>
+                <Card style={styles.card} className='markWinning'>
                   <CardBody className="d-flex justify-content-center">
                     <Icon name={item} />
                   </CardBody>
