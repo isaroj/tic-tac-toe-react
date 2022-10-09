@@ -101,6 +101,7 @@ const PlayerBoard = () => {
         setIsCross(false)
         setWinMessage('')
         itemArray.fill('empty')
+        document.querySelectorAll(".markWinning").forEach(ele => ele.style.backgroundColor = '#fff')
     }
     const setWinningMark = (posArray) => {
         posArray.forEach(
