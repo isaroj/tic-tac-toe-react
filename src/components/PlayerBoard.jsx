@@ -38,7 +38,12 @@ const PlayerBoard = () => {
         checkWinner()
     }
     const checkWinner = () => {
-        if (
+        const index = itemArray.findIndex(item => item === 'empty')
+        if (index === -1) {
+            setWinMessage('It is a draw!!')
+            return
+        }
+        else if (
           itemArray[0] !== "empty" &&
           itemArray[0] === itemArray[1] &&
           itemArray[0] === itemArray[2]
